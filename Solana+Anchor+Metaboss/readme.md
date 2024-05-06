@@ -1,4 +1,3 @@
-
 # Solana Development Environment Docker Container
 
 This Docker container is set up to provide a comprehensive Solana blockchain development environment. It includes all necessary dependencies for building and running Solana projects, along with tools like Rust, Node.js, Yarn, Anchor, and Metaboss.
@@ -17,22 +16,20 @@ This Docker container is set up to provide a comprehensive Solana blockchain dev
 To build this Docker container, you can use the following command:
 
 ```bash
-docker build -t solana-anchor-metaboss.
+docker build -t solana-dev-env .
 ```
 
 This command builds the Docker image with the tag `solana-dev-env`, using the Dockerfile in the current directory.
-
 
 ## Running the Container
 
 After building the image, run the container using:
 
 ```bash
-docker run -it --name solana-anchor-metaboss solana-anchor-metaboss
+docker run -it --name solana-dev solana-dev-env
 ```
 
 This command starts a container named `my-solana-env` in interactive mode with a terminal, using the `solana-dev-env` image.
-
 
 ## Using the Development Environment
 

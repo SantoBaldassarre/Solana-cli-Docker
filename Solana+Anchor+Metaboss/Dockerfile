@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
@@ -15,6 +14,7 @@ RUN rustup component add rustfmt
 RUN git clone https://github.com/solana-labs/solana.git
 WORKDIR /solana
 
+
 # Install Node.js and Yarn
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
@@ -25,6 +25,9 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
 # Build Solana
 RUN cargo build --release
 ENV PATH="/solana/target/release:${PATH}"
+
+# install spl-token-cli
+RUN cargo install spl-token-cli
 
 # Install Anchor
 RUN cargo install --git https://github.com/project-serum/anchor avm --locked --force
@@ -38,6 +41,5 @@ WORKDIR /solana
 # Install and set up Anchor virtual machine
 RUN avm install latest && \
     avm use latest
-
 
 CMD ["bash"]
